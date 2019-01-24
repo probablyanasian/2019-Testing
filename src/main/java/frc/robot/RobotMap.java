@@ -7,9 +7,8 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.interfaces.Gyro;
-import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.AnalogInput;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -23,7 +22,8 @@ public class RobotMap {
   // public static int leftMotor = 1;
   // public static int rightMotor = 2;
   public static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
-  public static int gyroPort = 0;
+  AnalogInput ultrasonic = new AnalogInput(1);
+  public static int ultrasonicPort = 1; 
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
