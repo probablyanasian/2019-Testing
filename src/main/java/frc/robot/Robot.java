@@ -32,6 +32,7 @@ public class Robot extends TimedRobot {
   SendableChooser<Command> m_chooser = new SendableChooser<>();
   public static Gyroscope gyroscope = new Gyroscope(RobotMap.gyro);
   public static AnalogInput ultrasonic = new AnalogInput(RobotMap.ultrasonicPort);
+  public static AnalogInput ultrasonicsecond = new AnalogInput(RobotMap.ultrasonicPortsecond);
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -104,7 +105,8 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
-    System.out.println("Gyroscope Angle:" + gyroscope.getGyroAngle());
+    //System.out.println("Gyroscope Angle:" + gyroscope.getGyroAngle());
+    System.out.println("Ultrasonic Voltage:" + ultrasonicsecond.getVoltage());
     System.out.println("Ultrasonic Voltage:" + ultrasonic.getVoltage());
   }
 
