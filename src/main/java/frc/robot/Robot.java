@@ -106,8 +106,8 @@ public class Robot extends TimedRobot {
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
     //System.out.println("Gyroscope Angle:" + gyroscope.getGyroAngle());
-    System.out.println("Ultrasonic Voltage:" + ultrasonicsecond.getVoltage());
-    System.out.println("Ultrasonic Voltage:" + ultrasonic.getVoltage());
+    System.out.println("Ultrasonic Voltage G:" + ultrasonicsecond.getVoltage());
+    System.out.println("Ultrasonic Voltage B:" + ultrasonic.getVoltage());
   }
 
   @Override
