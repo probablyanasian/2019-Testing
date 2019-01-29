@@ -118,8 +118,15 @@ public class Robot extends TimedRobot {
     System.out.println("Cycle count:" + RobotMap.x);
     //System.out.println("Ultrasonic Voltage B:" + ultrasonic.getVoltage());
    */
-    System.out.println("Ultrasonic Dist:" + potato.getRangeInches());
-
+    if(RobotMap.x >= 50) {
+      System.out.println("Ultrasonic First Dist:" + potato.getRangeInches());
+      System.out.println("Ultrasonic Second Dist:" + totato.getRangeInches());
+      if(RobotMap.x == 50){
+        System.out.println("Exact?!?!?!?");
+      }
+      RobotMap.x = 0;
+    }
+    RobotMap.x += 1;
   }
 
   @Override
