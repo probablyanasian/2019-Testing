@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.RobotMap;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import frc.robot.subsystems.*;
 
 /**
@@ -33,6 +34,8 @@ public class Robot extends TimedRobot {
   public static Gyroscope gyroscope = new Gyroscope(RobotMap.gyro);
   public static AnalogInput ultrasonic = new AnalogInput(RobotMap.ultrasonicPort);
   public static AnalogInput ultrasonicsecond = new AnalogInput(RobotMap.ultrasonicPortsecond);
+  Ultrasonic potato = new Ultrasonic(0, 1);
+  Ultrasonic totato = new Ultrasonic(2, 3);
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -85,13 +88,14 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     m_autonomousCommand = m_chooser.getSelected();
-
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",
      * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
      * = new MyAutoCommand(); break; case "Default Auto": default:
      * autonomousCommand = new ExampleCommand(); break; }
      */
+    potato.setAutomaticMode(true);
+    totato.setAutomaticMode(true);
 
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
@@ -105,9 +109,17 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
+    /*
     //System.out.println("Gyroscope Angle:" + gyroscope.getGyroAngle());
-    System.out.println("Ultrasonic Voltage G:" + ultrasonicsecond.getVoltage());
-    System.out.println("Ultrasonic Voltage B:" + ultrasonic.getVoltage());
+    if(RobotMap.x > 100){
+       System.out.println("Ultrasonic Voltage:" + ultrasonicsecond.getVoltage());
+    }
+    RobotMap.x += 1;
+    System.out.println("Cycle count:" + RobotMap.x);
+    //System.out.println("Ultrasonic Voltage B:" + ultrasonic.getVoltage());
+   */
+    System.out.println("Ultrasonic Dist:" + potato.getRangeInches());
+
   }
 
   @Override

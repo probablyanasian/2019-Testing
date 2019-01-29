@@ -7,7 +7,9 @@
 
 package frc.robot.subsystems;
 
+
 import edu.wpi.first.wpilibj.command.Subsystem;
+
 
 /**
  * Add your docs here.
@@ -15,6 +17,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Ultrasonic extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
+ //Ultrasonic potato = new Ultrasonic(0, 1);
 
   @Override
   public void initDefaultCommand() {
