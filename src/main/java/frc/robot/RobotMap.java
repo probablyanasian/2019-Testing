@@ -21,6 +21,16 @@ public class RobotMap {
   // following variables to use with your drivetrain subsystem.
   // public static int leftMotor = 1;
   // public static int rightMotor = 2;
+<<<<<<< HEAD
+=======
+  public static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
+  AnalogInput ultrasonic = new AnalogInput(1);
+  public static int ultrasonicPortsecond = 2;
+  public static int ultrasonicPort = 1;
+  public static int x = 0; 
+  public static int ultrasonicpingPort = 0;
+  public static int ultrasonicoutputPort = 1;
+>>>>>>> parent of 3475d60... WORKING CODE
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:
 
