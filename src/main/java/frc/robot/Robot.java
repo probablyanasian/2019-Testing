@@ -7,16 +7,10 @@
 
 package frc.robot;
 
-import java.lang.Thread;
-import edu.wpi.first.wpilibj.AnalogInput;
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.RobotMap;
-//import frc.robot.commands.UltSonic;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import frc.robot.subsystems.*;
 
@@ -33,10 +27,9 @@ public class Robot extends TimedRobot {
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
-  public static GyroscopeSubsystem gyroscope = new GyroscopeSubsystem(RobotMap.gyro);
-  public static UltrasonicSubsystem ultrasonic = new UltrasonicSubsystem();
-  public static Ultrasonic potato = new Ultrasonic(0, 1);
-  public static Ultrasonic totato = new Ultrasonic(2, 3);
+
+  public static Ultrasonic ultrasonicOne = new Ultrasonic(0, 1);
+  public static Ultrasonic ultrasonicTwo = new Ultrasonic(2, 3);
 
   /**
    * This function is run when the robot is first started up and should be
@@ -88,14 +81,8 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     m_autonomousCommand = m_chooser.getSelected();
-    /*
-     * String autoSelected = SmartDashboard.getString("Auto Selector",
-     * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-     * = new MyAutoCommand(); break; case "Default Auto": default:
-     * autonomousCommand = new ExampleCommand(); break; }
-     */
-    potato.setAutomaticMode(false);
-    //totato.setAutomaticMode(false);
+
+    ultrasonicOne.setAutomaticMode(false);
 
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
@@ -109,33 +96,22 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
-    /*
-    //System.out.println("GyroscopeSubsystem Angle:" + gyroscope.getGyroAngle());
-    if(RobotMap.x > 100){
-       System.out.println("Ultrasonic Voltage:" + ultrasonicsecond.getVoltage());
-    }
-    RobotMap.x += 1;
-    System.out.println("Cycle count:" + RobotMap.x);
-    //System.out.println("Ultrasonic Voltage B:" + ultrasonic.getVoltage());
-    */
 
-    //Ultrasonic potato = new Ultrasonic(0, 1);
-
-      if(!potato.isRangeValid()) {
-      potato.ping();
-    }
+      if(!ultrasonicOne.isRangeValid()) {
+      ultrasonicOne.ping();
+      }
     
-    if(potato.isRangeValid()){
-      System.out.print("Potato: " + Math.floor(potato.getRangeInches()) + " ");
-
-  }
-    if(!totato.isRangeValid()) {
-      totato.ping();
-    }
-    
-    if(totato.isRangeValid()){
-      System.out.println("Totato: " + Math.floor(totato.getRangeInches()));
-    }
+      if(ultrasonicOne.isRangeValid()){
+        System.out.print("ultrasonicOne: " + Math.floor(ultrasonicOne.getRangeInches()) + " ");
+      }
+      
+      if(!ultrasonicTwo.isRangeValid()) {
+        ultrasonicTwo.ping();
+      }
+      
+      if(ultrasonicTwo.isRangeValid()){
+        System.out.println("ultrasonicTwo: " + Math.floor(ultrasonicTwo.getRangeInches()));
+      }
 
   } //END OF AUTON
 
