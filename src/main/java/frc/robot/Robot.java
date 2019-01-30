@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
-import frc.robot.commands.UltSonic;
+//import frc.robot.commands.UltSonic;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import frc.robot.subsystems.*;
 
@@ -35,6 +35,9 @@ public class Robot extends TimedRobot {
   SendableChooser<Command> m_chooser = new SendableChooser<>();
   public static GyroscopeSubsystem gyroscope = new GyroscopeSubsystem(RobotMap.gyro);
   public static UltrasonicSubsystem ultrasonic = new UltrasonicSubsystem();
+  public static Ultrasonic potato = new Ultrasonic(0, 1);
+  public static Ultrasonic totato = new Ultrasonic(2, 3);
+
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -42,10 +45,6 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_oi = new OI();
-    new Thread(() -> {
-      UltrasonicSubsystem.potato.setAutomaticMode(true);
-      System.out.println("Potato: " + UltrasonicSubsystem.potato.getRangeInches());
-    }).start();
 
   }
 
@@ -58,7 +57,7 @@ public class Robot extends TimedRobot {
    * LiveWindow and SmartDashboard integrated updating.
    */
   @Override
-  public void robotPeriodic() {
+  public void robotPeriodic() {;
   }
 
   /**
@@ -95,7 +94,7 @@ public class Robot extends TimedRobot {
      * = new MyAutoCommand(); break; case "Default Auto": default:
      * autonomousCommand = new ExampleCommand(); break; }
      */
-    //otato.setAutomaticMode(true);
+    potato.setAutomaticMode(false);
     //totato.setAutomaticMode(false);
 
     // schedule the autonomous command (example)
@@ -109,8 +108,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-
-    System.out.println(Robot.gyroscope.getGyroAngle());
     Scheduler.getInstance().run();
     /*
     //System.out.println("GyroscopeSubsystem Angle:" + gyroscope.getGyroAngle());
@@ -121,7 +118,45 @@ public class Robot extends TimedRobot {
     System.out.println("Cycle count:" + RobotMap.x);
     //System.out.println("Ultrasonic Voltage B:" + ultrasonic.getVoltage());
     */
+
+    //Ultrasonic potato = new Ultrasonic(0, 1);
+    if(RobotMap.baz) {
+      if(RobotMap.foo) {;
+      potato.ping();
+      RobotMap.foo = false;
+    }
+    
+    if(potato.isRangeValid()){
+     //System.out.println("Potato: " +  potato.getRangeInches());
+      System.out.print("Potato: " + Math.floor(potato.getRangeInches()) + " ");
+      RobotMap.foo = true;
+      RobotMap.baz = false;
+    }
   }
+    if(!RobotMap.baz) {
+    if(RobotMap.bar) {
+      totato.ping();
+      RobotMap.bar = false;
+    }
+    
+    if(totato.isRangeValid()){
+      //System.out.println("Totato: " +  totato.getRangeInches());
+
+      System.out.println("Totato: " + Math.floor(totato.getRangeInches()));
+      RobotMap.bar = true;
+      RobotMap.baz = true;
+    }
+  }
+
+
+    //potato.close();
+
+/*     Ultrasonic totato = new Ultrasonic(2, 3);
+    totato.setAutomaticMode(true);
+    System.out.println("Totato: " +  totato.getRangeInches());
+    totato.close(); */
+
+  } //END OF AUTONOMOU
 
   @Override
   public void teleopInit() {
