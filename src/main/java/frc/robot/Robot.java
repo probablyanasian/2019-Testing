@@ -89,7 +89,6 @@ public class Robot extends TimedRobot {
       m_autonomousCommand.start();
     }
   }
-
   /**
    * This function is called periodically during autonomous.
    */
