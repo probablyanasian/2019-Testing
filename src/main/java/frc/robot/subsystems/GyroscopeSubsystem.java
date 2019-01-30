@@ -7,21 +7,40 @@
 
 package frc.robot.subsystems;
 
-
 import edu.wpi.first.wpilibj.command.Subsystem;
-
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 
 /**
  * Add your docs here.
  */
-public class Ultrasonic extends Subsystem {
+public class GyroscopeSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
- //Ultrasonic potato = new Ultrasonic(0, 1);
+
+  ADXRS450_Gyro gyro; 
+
+  public GyroscopeSubsystem(ADXRS450_Gyro g){
+    gyro = g;
+  }
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+  }
+
+  /**
+   * Gets the angle of the gyroscope
+   * @return the angle of the gyroscope in double 
+   */
+  public double getGyroAngle(){
+    return gyro.getAngle();
+  }
+
+  /**
+   * Resets the angle of the gyroscope to 0
+   */
+  public void resetAngle(){
+    gyro.reset();
   }
 }
