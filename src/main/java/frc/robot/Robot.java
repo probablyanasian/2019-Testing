@@ -11,12 +11,6 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-<<<<<<< HEAD
-=======
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.RobotMap;
-import frc.robot.commands.UltSonic;
->>>>>>> parent of 3475d60... WORKING CODE
 import edu.wpi.first.wpilibj.Ultrasonic;
 import frc.robot.subsystems.*;
 
@@ -33,15 +27,10 @@ public class Robot extends TimedRobot {
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
-<<<<<<< HEAD
 
   public static Ultrasonic ultrasonicOne = new Ultrasonic(0, 1);
   public static Ultrasonic ultrasonicTwo = new Ultrasonic(2, 3);
 
-=======
-  public static GyroscopeSubsystem gyroscope = new GyroscopeSubsystem(RobotMap.gyro);
-  public static UltrasonicSubsystem ultrasonic = new UltrasonicSubsystem();
->>>>>>> parent of 3475d60... WORKING CODE
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -96,11 +85,9 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     m_autonomousCommand = m_chooser.getSelected();
-<<<<<<< HEAD
 
     ///Sets all the ultrasonics to manual mode, NOT automatic.
     ultrasonicOne.setAutomaticMode(false);
-=======
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",
      * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
@@ -109,7 +96,6 @@ public class Robot extends TimedRobot {
      */
     //otato.setAutomaticMode(true);
     //totato.setAutomaticMode(false);
->>>>>>> parent of 3475d60... WORKING CODE
 
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
@@ -121,31 +107,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-
-    System.out.println(Robot.gyroscope.getGyroAngle());
     Scheduler.getInstance().run();
-<<<<<<< HEAD
-
-      /* This checks whether the ultrasonic returned a valid range
-      If it didn't, it will make the ultrasonic ping again */
-      if(!ultrasonicOne.isRangeValid()) {
-      ultrasonicOne.ping();
-      }
-    
-      if(ultrasonicOne.isRangeValid()){
-        System.out.print("ultrasonicOne: " + Math.floor(ultrasonicOne.getRangeInches()) + " ");
-      }
-      
-      if(!ultrasonicTwo.isRangeValid()) {
-        ultrasonicTwo.ping();
-      }
-      
-      if(ultrasonicTwo.isRangeValid()){
-        System.out.println("ultrasonicTwo: " + Math.floor(ultrasonicTwo.getRangeInches()));
-      }
-
-  } //END OF AUTON
-=======
     /*
     //System.out.println("GyroscopeSubsystem Angle:" + gyroscope.getGyroAngle());
     if(RobotMap.x > 100){
@@ -156,7 +118,6 @@ public class Robot extends TimedRobot {
     //System.out.println("Ultrasonic Voltage B:" + ultrasonic.getVoltage());
     */
   }
->>>>>>> parent of 3475d60... WORKING CODE
 
   @Override
   public void teleopInit() {
