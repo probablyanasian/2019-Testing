@@ -15,19 +15,19 @@ public class UltSonic extends Command {
   public UltSonic() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.ultrasonic);
+  //  requires(Robot.ultrasonic);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    UltrasonicSubsystem.potato.setAutomaticMode(true);
+  //  UltrasonicSubsystem.potato.setAutomaticMode(true);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    System.out.println("Potato: " + UltrasonicSubsystem.potato.getRangeInches());
+  //  System.out.println("Potato: " + UltrasonicSubsystem.potato.getRangeInches());
   }
 
   // Make this return true when this Command no longer needs to run execute()

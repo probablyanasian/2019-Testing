@@ -17,8 +17,6 @@ import edu.wpi.first.wpilibj.Ultrasonic;
 public class UltrasonicSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  public static Ultrasonic potato = new Ultrasonic(0, 1);
-  public static Ultrasonic totato = new Ultrasonic(2, 3);
 
   @Override
   public void initDefaultCommand() {
