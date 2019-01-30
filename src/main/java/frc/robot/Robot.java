@@ -120,43 +120,24 @@ public class Robot extends TimedRobot {
     */
 
     //Ultrasonic potato = new Ultrasonic(0, 1);
-    if(RobotMap.baz) {
-      if(RobotMap.foo) {;
+
+      if(!potato.isRangeValid()) {
       potato.ping();
-      RobotMap.foo = false;
     }
     
     if(potato.isRangeValid()){
-     //System.out.println("Potato: " +  potato.getRangeInches());
       System.out.print("Potato: " + Math.floor(potato.getRangeInches()) + " ");
-      RobotMap.foo = true;
-      RobotMap.baz = false;
-    }
+
   }
-    if(!RobotMap.baz) {
-    if(RobotMap.bar) {
+    if(!totato.isRangeValid()) {
       totato.ping();
-      RobotMap.bar = false;
     }
     
     if(totato.isRangeValid()){
-      //System.out.println("Totato: " +  totato.getRangeInches());
-
       System.out.println("Totato: " + Math.floor(totato.getRangeInches()));
-      RobotMap.bar = true;
-      RobotMap.baz = true;
     }
-  }
 
-
-    //potato.close();
-
-/*     Ultrasonic totato = new Ultrasonic(2, 3);
-    totato.setAutomaticMode(true);
-    System.out.println("Totato: " +  totato.getRangeInches());
-    totato.close(); */
-
-  } //END OF AUTONOMOU
+  } //END OF AUTON
 
   @Override
   public void teleopInit() {
