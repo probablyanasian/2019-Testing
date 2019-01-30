@@ -57,7 +57,7 @@ public class Robot extends TimedRobot {
    * LiveWindow and SmartDashboard integrated updating.
    */
   @Override
-  public void robotPeriodic() {
+  public void robotPeriodic() {;
   }
 
   /**
@@ -121,7 +121,7 @@ public class Robot extends TimedRobot {
 
     //Ultrasonic potato = new Ultrasonic(0, 1);
     if(RobotMap.baz) {
-      if(RobotMap.foo) {
+      if(RobotMap.foo) {;
       potato.ping();
       RobotMap.foo = false;
     }
