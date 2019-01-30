@@ -38,10 +38,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_oi = new OI();
-    new Thread(() -> {
-      UltrasonicSubsystem.potato.setAutomaticMode(true);
-      System.out.println("Potato: " + UltrasonicSubsystem.potato.getRangeInches());
-    }).start();
+
 
   }
 
@@ -95,7 +92,7 @@ public class Robot extends TimedRobot {
      * autonomousCommand = new ExampleCommand(); break; }
      */
     //otato.setAutomaticMode(true);
-    //totato.setAutomaticMode(false);
+    //ultrasonicTwo.setAutomaticMode(false);
 
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
@@ -117,6 +114,29 @@ public class Robot extends TimedRobot {
     System.out.println("Cycle count:" + RobotMap.x);
     //System.out.println("Ultrasonic Voltage B:" + ultrasonic.getVoltage());
     */
+    if(!RobotMap.baz) {
+      if(RobotMap.foo) {;
+      ultrasonicOne.ping();
+      RobotMap.foo = false;
+      }
+      
+      if(ultrasonicOne.isRangeValid()){
+        System.out.print("Ultrasonic One: " + Math.floor(ultrasonicOne.getRangeInches()) + " ");
+        RobotMap.foo = true;
+        RobotMap.baz = true;
+      }
+    }
+    if(RobotMap.baz) {
+      if(RobotMap.bar) {
+        ultrasonicTwo.ping();
+        RobotMap.bar = false;
+      }
+      
+      if(ultrasonicTwo.isRangeValid()){
+        System.out.println("Ultrasonic Two: " + Math.floor(ultrasonicTwo.getRangeInches()));
+        RobotMap.bar = true;
+      }
+    }
   }
 
   @Override
