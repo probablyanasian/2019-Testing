@@ -82,6 +82,7 @@ public class Robot extends TimedRobot {
   public void autonomousInit() {
     m_autonomousCommand = m_chooser.getSelected();
 
+    ///Sets all the ultrasonics to manual mode, NOT automatic.
     ultrasonicOne.setAutomaticMode(false);
 
     // schedule the autonomous command (example)
@@ -96,6 +97,8 @@ public class Robot extends TimedRobot {
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
 
+      /* This checks whether the ultrasonic returned a valid range
+      If it didn't, it will make the ultrasonic ping again */
       if(!ultrasonicOne.isRangeValid()) {
       ultrasonicOne.ping();
       }
