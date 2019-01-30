@@ -103,6 +103,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
+
+    System.out.println(Robot.gyroscope.getGyroAngle());
     Scheduler.getInstance().run();
   }
 
