@@ -85,32 +85,7 @@ public class Robot extends TimedRobot {
 
     ///Sets all the ultrasonics to manual mode, NOT automatic.
     ultrasonicOne.setAutomaticMode(false);
-    if(!RobotMap.qux) {
-      if(!RobotMap.baz) {
-        if(RobotMap.foo) {;
-        ultrasonicOne.ping();
-        RobotMap.foo = false;
-        }
-        
-        if(ultrasonicOne.isRangeValid()){
-          System.out.print("Ultrasonic One: " + Math.floor(ultrasonicOne.getRangeInches()) + " ");
-          RobotMap.foo = true;
-          RobotMap.baz = true;
-        }
-      }
-      if(RobotMap.baz) {
-        if(RobotMap.bar) {
-          ultrasonicTwo.ping();
-          RobotMap.bar = false;
-        }
-        
-        if(ultrasonicTwo.isRangeValid()){
-          System.out.println("Ultrasonic Two: " + Math.floor(ultrasonicTwo.getRangeInches()));
-          RobotMap.bar = true;
-          RobotMap.baz = false;
-        }
-      }
-    }
+    
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
       m_autonomousCommand.start();
@@ -131,28 +106,30 @@ public class Robot extends TimedRobot {
     System.out.println("Cycle count:" + RobotMap.x);
     //System.out.println("Ultrasonic Voltage B:" + ultrasonic.getVoltage());
     */
-    if(!RobotMap.baz) {
-      if(RobotMap.foo) {;
-      ultrasonicOne.ping();
-      RobotMap.foo = false;
+    if(RobotMap.pingWhich) {
+      if(RobotMap.ultrasonicPing) {
+        ultrasonicOne.ping();
+        RobotMap.ultrasonicPing = false;
       }
       
-      if(ultrasonicOne.isRangeValid()){
-        System.out.print("Ultrasonic One: " + Math.floor(ultrasonicOne.getRangeInches()) + " ");
-        RobotMap.foo = true;
-        RobotMap.baz = true;
+      else {
+        if(ultrasonicOne.isRangeValid()){
+          System.out.print("Ultrasonic One: " + Math.floor(ultrasonicOne.getRangeInches()) + " ");
+          RobotMap.pingWhich = !RobotMap.pingWhich;
+          RobotMap.ultrasonicPing = true;
+        }
       }
     }
-    if(RobotMap.baz) {
-      if(RobotMap.bar) {
+
+    else {
+      if(RobotMap.ultrasonicPing) {
         ultrasonicTwo.ping();
-        RobotMap.bar = false;
+        RobotMap.ultrasonicPing = false;
       }
-      
       if(ultrasonicTwo.isRangeValid()){
-        System.out.println("Ultrasonic Two: " + Math.floor(ultrasonicTwo.getRangeInches()));
-        RobotMap.bar = true;
-        RobotMap.baz = false;
+      System.out.println("Ultrasonic Two: " + Math.floor(ultrasonicTwo.getRangeInches()));
+      RobotMap.pingWhich = !RobotMap.pingWhich;
+      RobotMap.ultrasonicPing = true;
       }
     }
   }
