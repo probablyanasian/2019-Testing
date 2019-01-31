@@ -85,15 +85,32 @@ public class Robot extends TimedRobot {
 
     ///Sets all the ultrasonics to manual mode, NOT automatic.
     ultrasonicOne.setAutomaticMode(false);
-    /*
-     * String autoSelected = SmartDashboard.getString("Auto Selector",
-     * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-     * = new MyAutoCommand(); break; case "Default Auto": default:
-     * autonomousCommand = new ExampleCommand(); break; }
-     */
-    //otato.setAutomaticMode(true);
-    //ultrasonicTwo.setAutomaticMode(false);
-
+    if(!RobotMap.qux) {
+      if(!RobotMap.baz) {
+        if(RobotMap.foo) {;
+        ultrasonicOne.ping();
+        RobotMap.foo = false;
+        }
+        
+        if(ultrasonicOne.isRangeValid()){
+          System.out.print("Ultrasonic One: " + Math.floor(ultrasonicOne.getRangeInches()) + " ");
+          RobotMap.foo = true;
+          RobotMap.baz = true;
+        }
+      }
+      if(RobotMap.baz) {
+        if(RobotMap.bar) {
+          ultrasonicTwo.ping();
+          RobotMap.bar = false;
+        }
+        
+        if(ultrasonicTwo.isRangeValid()){
+          System.out.println("Ultrasonic Two: " + Math.floor(ultrasonicTwo.getRangeInches()));
+          RobotMap.bar = true;
+          RobotMap.baz = false;
+        }
+      }
+    }
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
       m_autonomousCommand.start();
@@ -135,6 +152,7 @@ public class Robot extends TimedRobot {
       if(ultrasonicTwo.isRangeValid()){
         System.out.println("Ultrasonic Two: " + Math.floor(ultrasonicTwo.getRangeInches()));
         RobotMap.bar = true;
+        RobotMap.baz = false;
       }
     }
   }

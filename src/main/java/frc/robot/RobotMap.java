@@ -28,7 +28,7 @@ public class RobotMap {
   public static int x = 0; 
   public static int ultrasonicpingPort = 0;
   public static int ultrasonicoutputPort = 1;
-  public static boolean foo = true, bar = true, baz = true;
+  public static boolean foo = true, bar = true, baz = true, qux = false;
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:
 
