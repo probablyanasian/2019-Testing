@@ -30,6 +30,8 @@ public class Robot extends TimedRobot {
 
   public static Ultrasonic ultrasonicOne = new Ultrasonic(0, 1);
   public static Ultrasonic ultrasonicTwo = new Ultrasonic(2, 3);
+  public static Ultrasonic ultrasonicThree = new Ultrasonic(4, 5);
+  public static Ultrasonic ultrasonicFour = new Ultrasonic(6, 7);
 
   /**
    * This function is run when the robot is first started up and should be
@@ -106,7 +108,7 @@ public class Robot extends TimedRobot {
     System.out.println("Cycle count:" + RobotMap.x);
     //System.out.println("Ultrasonic Voltage B:" + ultrasonic.getVoltage());
     */
-    if(RobotMap.pingWhich) {
+    /* if(RobotMap.pingWhich) {
       if(RobotMap.ultrasonicPing) {
         ultrasonicOne.ping();
         RobotMap.ultrasonicPing = false;
@@ -131,7 +133,59 @@ public class Robot extends TimedRobot {
       RobotMap.pingWhich = !RobotMap.pingWhich;
       RobotMap.ultrasonicPing = true;
       }
+    } */
+
+    if(RobotMap.pingWhich == 0) {
+      if(RobotMap.ultrasonicPing) {
+        ultrasonicOne.ping();
+        RobotMap.ultrasonicPing = false;
+      }
+      
+      else {
+        if(ultrasonicOne.isRangeValid()){
+          System.out.print("Ultrasonic One: " + Math.floor(ultrasonicOne.getRangeInches()) + " ");
+          RobotMap.pingWhich += 1;
+          RobotMap.ultrasonicPing = true;
+        }
+      }
     }
+
+    else if(RobotMap.pingWhich == 1) {
+      if(RobotMap.ultrasonicPing) {
+        ultrasonicTwo.ping();
+        RobotMap.ultrasonicPing = false;
+      }
+      if(ultrasonicTwo.isRangeValid()){
+      System.out.println("Ultrasonic Two: " + Math.floor(ultrasonicTwo.getRangeInches()));
+      RobotMap.pingWhich += 1;
+      RobotMap.ultrasonicPing = true;
+      }
+    }
+
+    else if(RobotMap.pingWhich == 2) {
+      if(RobotMap.ultrasonicPing) {
+        ultrasonicThree.ping();
+        RobotMap.ultrasonicPing = false;
+      }
+      if(ultrasonicThree.isRangeValid()){
+      System.out.print("Ultrasonic Three: " + Math.floor(ultrasonicThree.getRangeInches()));
+      RobotMap.pingWhich += 1;
+      RobotMap.ultrasonicPing = true;
+      }
+    }
+
+    else if(RobotMap.pingWhich == 3) {
+      if(RobotMap.ultrasonicPing) {
+        ultrasonicFour.ping();
+        RobotMap.ultrasonicPing = false;
+      }
+      if(ultrasonicFour.isRangeValid()){
+      System.out.println("Ultrasonic Three: " + Math.floor(ultrasonicFour.getRangeInches()));
+      RobotMap.pingWhich = 0;
+      RobotMap.ultrasonicPing = true;
+      }
+    }
+
   }
 
   @Override
