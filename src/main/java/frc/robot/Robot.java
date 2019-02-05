@@ -41,7 +41,56 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_oi = new OI();
 
+    if(RobotMap.pingWhich == 0) {
+      if(RobotMap.ultrasonicPing) {
+        ultrasonicOne.ping();
+        RobotMap.ultrasonicPing = false;
+      }
+      
+      else {
+        if(ultrasonicOne.isRangeValid()){
+          System.out.print(Math.floor(ultrasonicOne.getRangeInches()) + " ");
+          RobotMap.pingWhich += 1;
+          RobotMap.ultrasonicPing = true;
+        }
+      }
+    }
 
+    else if(RobotMap.pingWhich == 1) {
+      if(RobotMap.ultrasonicPing) {
+        ultrasonicTwo.ping();
+        RobotMap.ultrasonicPing = false;
+      }
+      if(ultrasonicTwo.isRangeValid()){
+      System.out.print(Math.floor(ultrasonicTwo.getRangeInches()) + " ");
+      RobotMap.pingWhich += 1;
+      RobotMap.ultrasonicPing = true;
+      }
+    }
+
+    else if(RobotMap.pingWhich == 2) {
+      if(RobotMap.ultrasonicPing) {
+        ultrasonicThree.ping();
+        RobotMap.ultrasonicPing = false;
+      }
+      if(ultrasonicThree.isRangeValid()){
+      System.out.print(Math.floor(ultrasonicThree.getRangeInches()) + " ");
+      RobotMap.pingWhich += 1;
+      RobotMap.ultrasonicPing = true;
+      }
+    }
+
+    else if(RobotMap.pingWhich == 3) {
+      if(RobotMap.ultrasonicPing) {
+        ultrasonicFour.ping();
+        RobotMap.ultrasonicPing = false;
+      }
+      if(ultrasonicFour.isRangeValid()){
+      System.out.println(Math.floor(ultrasonicFour.getRangeInches()) + " ");
+      RobotMap.pingWhich = 0;
+      RobotMap.ultrasonicPing = true;
+      }
+    }
   }
 
   /**
@@ -143,7 +192,7 @@ public class Robot extends TimedRobot {
       
       else {
         if(ultrasonicOne.isRangeValid()){
-          System.out.print("Ultrasonic One: " + Math.floor(ultrasonicOne.getRangeInches()) + " ");
+          System.out.print(Math.floor(ultrasonicOne.getRangeInches()) + " ");
           RobotMap.pingWhich += 1;
           RobotMap.ultrasonicPing = true;
         }
@@ -156,7 +205,7 @@ public class Robot extends TimedRobot {
         RobotMap.ultrasonicPing = false;
       }
       if(ultrasonicTwo.isRangeValid()){
-      System.out.println("Ultrasonic Two: " + Math.floor(ultrasonicTwo.getRangeInches()));
+      System.out.print(Math.floor(ultrasonicTwo.getRangeInches()) + " ");
       RobotMap.pingWhich += 1;
       RobotMap.ultrasonicPing = true;
       }
@@ -168,7 +217,7 @@ public class Robot extends TimedRobot {
         RobotMap.ultrasonicPing = false;
       }
       if(ultrasonicThree.isRangeValid()){
-      System.out.print("Ultrasonic Three: " + Math.floor(ultrasonicThree.getRangeInches()));
+      System.out.print(Math.floor(ultrasonicThree.getRangeInches()) + " ");
       RobotMap.pingWhich += 1;
       RobotMap.ultrasonicPing = true;
       }
@@ -180,12 +229,11 @@ public class Robot extends TimedRobot {
         RobotMap.ultrasonicPing = false;
       }
       if(ultrasonicFour.isRangeValid()){
-      System.out.println("Ultrasonic Three: " + Math.floor(ultrasonicFour.getRangeInches()));
+      System.out.println(Math.floor(ultrasonicFour.getRangeInches()) + " ");
       RobotMap.pingWhich = 0;
       RobotMap.ultrasonicPing = true;
       }
     }
-
   }
 
   @Override
