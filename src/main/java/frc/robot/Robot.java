@@ -134,8 +134,8 @@ public class Robot extends TimedRobot {
   public void autonomousInit() {
     m_autonomousCommand = m_chooser.getSelected();
 
-    ///Sets all the ultrasonics to manual mode, NOT automatic.
-    ultrasonicOne.setAutomaticMode(false);
+    ///Sets all the ultrasonics to automatic mode
+    ultrasonicOne.setAutomaticMode(true);
     
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
@@ -157,7 +157,7 @@ public class Robot extends TimedRobot {
     System.out.println("Cycle count:" + RobotMap.x);
     //System.out.println("Ultrasonic Voltage B:" + ultrasonic.getVoltage());
     */
-    /* if(RobotMap.pingWhich) {
+/*  if(RobotMap.pingWhich) {
       if(RobotMap.ultrasonicPing) {
         ultrasonicOne.ping();
         RobotMap.ultrasonicPing = false;
@@ -178,13 +178,13 @@ public class Robot extends TimedRobot {
         RobotMap.ultrasonicPing = false;
       }
       if(ultrasonicTwo.isRangeValid()){
-      System.out.println("Ultrasonic Two: " + Math.floor(ultrasonicTwo.getRangeInches()));
-      RobotMap.pingWhich = !RobotMap.pingWhich;
-      RobotMap.ultrasonicPing = true;
+        System.out.println("Ultrasonic Two: " + Math.floor(ultrasonicTwo.getRangeInches()));
+        RobotMap.pingWhich = !RobotMap.pingWhich;
+        RobotMap.ultrasonicPing = true;
       }
     } */
-
-    if(RobotMap.pingWhich == 0) {
+    // TODO WORKING BELOW
+    /* if(RobotMap.pingWhich == 0) {
       if(RobotMap.ultrasonicPing) {
         ultrasonicOne.ping();
         RobotMap.ultrasonicPing = false;
@@ -233,6 +233,19 @@ public class Robot extends TimedRobot {
       RobotMap.pingWhich = 0;
       RobotMap.ultrasonicPing = true;
       }
+    } */
+    // TODO test this thing
+    if(ultrasonicOne.isRangeValid()) {
+      System.out.println("UltrasonicOne: " +  Math.floor(ultrasonicOne.getRangeInches()));
+    }
+    if(ultrasonicTwo.isRangeValid()) {
+      System.out.println("UltrasonicTwo: " +  Math.floor(ultrasonicTwo.getRangeInches()));
+    }
+    if(ultrasonicThree.isRangeValid()) {
+        System.out.println("UltrasonicThree: " +  Math.floor(ultrasonicTwo.getRangeInches()));
+      }
+    if(ultrasonicFour.isRangeValid()) {
+      System.out.println("UltrasonicFour: " +  Math.floor(ultrasonicFour.getRangeInches()));
     }
   }
 
