@@ -30,6 +30,9 @@ public class RobotMap {
   public static int ultrasonicoutputPort = 1;
   public static boolean ultrasonicPing = true;
   public static int pingWhich = 0;
+  public static double ultOne = 0, ultTwo = 0, ultThree = 0, ultFour = 0;
+  public static double addition = 0;
+  public static double division = 0;
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:
 

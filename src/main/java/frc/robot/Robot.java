@@ -142,6 +142,16 @@ public class Robot extends TimedRobot {
       m_autonomousCommand.start();
     }
   }
+
+  public double toAngle(double a, double b) {
+    double addition = 0.0;
+    double division = 0.0;
+    double angle = 0.0;
+    addition = a - b;
+    division = addition/101.6;
+    angle = Math.toDegrees(Math.atan(division)); 
+    return(angle);
+  }
   /**
    * This function is called periodically during autonomous.
    */
@@ -184,7 +194,7 @@ public class Robot extends TimedRobot {
       }
     } */
     // TODO WORKING BELOW
-    /* if(RobotMap.pingWhich == 0) {
+  if(RobotMap.pingWhich == 0) {
       if(RobotMap.ultrasonicPing) {
         ultrasonicOne.ping();
         RobotMap.ultrasonicPing = false;
@@ -192,7 +202,7 @@ public class Robot extends TimedRobot {
       
       else {
         if(ultrasonicOne.isRangeValid()){
-          System.out.print(Math.floor(ultrasonicOne.getRangeInches()) + " ");
+          RobotMap.ultOne = ultrasonicOne.getRangeMM();
           RobotMap.pingWhich += 1;
           RobotMap.ultrasonicPing = true;
         }
@@ -205,9 +215,9 @@ public class Robot extends TimedRobot {
         RobotMap.ultrasonicPing = false;
       }
       if(ultrasonicTwo.isRangeValid()){
-      System.out.print(Math.floor(ultrasonicTwo.getRangeInches()) + " ");
-      RobotMap.pingWhich += 1;
-      RobotMap.ultrasonicPing = true;
+        RobotMap.ultTwo = ultrasonicTwo.getRangeMM();
+        RobotMap.pingWhich += 1;
+        RobotMap.ultrasonicPing = true;
       }
     }
 
@@ -217,9 +227,9 @@ public class Robot extends TimedRobot {
         RobotMap.ultrasonicPing = false;
       }
       if(ultrasonicThree.isRangeValid()){
-      System.out.print(Math.floor(ultrasonicThree.getRangeInches()) + " ");
-      RobotMap.pingWhich += 1;
-      RobotMap.ultrasonicPing = true;
+        RobotMap.ultThree = ultrasonicThree.getRangeMM();
+        RobotMap.pingWhich += 1;
+        RobotMap.ultrasonicPing = true;
       }
     }
 
@@ -229,27 +239,16 @@ public class Robot extends TimedRobot {
         RobotMap.ultrasonicPing = false;
       }
       if(ultrasonicFour.isRangeValid()){
-      System.out.println(Math.floor(ultrasonicFour.getRangeInches()) + " ");
-      RobotMap.pingWhich = 0;
-      RobotMap.ultrasonicPing = true;
+        RobotMap.ultFour = ultrasonicFour.getRangeMM();
+        RobotMap.pingWhich = 0;
+        RobotMap.ultrasonicPing = true;
       }
-    } */
-    // TODO test this thing
-    if(ultrasonicOne.isRangeValid()) {
-      System.out.println("UltrasonicOne: " +  Math.floor(ultrasonicOne.getRangeInches()));
     }
-    if(ultrasonicTwo.isRangeValid()) {
-      System.out.println("UltrasonicTwo: " +  Math.floor(ultrasonicTwo.getRangeInches()));
-    }
-    if(ultrasonicThree.isRangeValid()) {
-        System.out.println("UltrasonicThree: " +  Math.floor(ultrasonicTwo.getRangeInches()));
-      }
-    if(ultrasonicFour.isRangeValid()) {
-      System.out.println("UltrasonicFour: " +  Math.floor(ultrasonicFour.getRangeInches()));
-    }
+    System.out.println(toAngle(RobotMap.ultOne, RobotMap.ultTwo));
   }
 
   @Override
+
   public void teleopInit() {
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
