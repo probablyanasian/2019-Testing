@@ -55,10 +55,10 @@ public class RobotMap {
   public static int counterRightThree = 0;
 
     //Ultrasonic Initiation
-  public static Ultrasonic ultrasonicLeftOne = new Ultrasonic(ultrasonicLeftOneTrigger, ultrasonicLeftOneEcho);
-  public static Ultrasonic ultrasonicLeftTwo = new Ultrasonic(ultrasonicLeftTwoTrigger, ultrasonicLeftTwoEcho);
-  public static Ultrasonic ultrasonicRightOne = new Ultrasonic(ultrasonicRighultrasonicLeftOneTriggerultrasonicLeftOneTriggertOneTrigger, ultrasonicRightOneEcho);
-  public static Ultrasonic ultrasonicRightTwo = new Ultrasonic(ultrasonicRightTwoTrigger, ultrasonicRightTwoEcho);
+  public static Ultrasonic ultrasonicLeftOne = new Ultrasonic(10, 11);
+  public static Ultrasonic ultrasonicLeftTwo = new Ultrasonic(12, 13);
+  public static Ultrasonic ultrasonicRightOne = new Ultrasonic(14, 15);
+  public static Ultrasonic ultrasonicRightTwo = new Ultrasonic(16, 17);
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;

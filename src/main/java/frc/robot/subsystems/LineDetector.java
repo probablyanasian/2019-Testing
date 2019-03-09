@@ -246,8 +246,8 @@ public class LineDetector extends Subsystem {
     (getIRSensors() & LineDetector.SENSOR_R2) == 1) {
       RobotMap.lastRightThree[0] = RobotMap.LeftEncoder.getRaw();
       RobotMap.lastRightThree[1] = RobotMap.RightEncoder.getRaw();
-    }  */
-  
+    }  
+  } */
 
   @Override
   public void initDefaultCommand() {
