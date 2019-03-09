@@ -1,0 +1,16 @@
+[
+  {
+    "artifact": "frcJava (in project UltrasonicTest)",
+    "target": "roborio",
+    "debugfile": "frcJava_roborio.debugconfig",
+    "project": "UltrasonicTest",
+    "language": "java"
+  },
+  {
+    "artifact": "frcJava (in project Testing)",
+    "target": "roborio",
+    "debugfile": "frcJava_roborio.debugconfig",
+    "project": "Testing",
+    "language": "java"
+  }
+]
