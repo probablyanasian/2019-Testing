@@ -64,8 +64,8 @@ public class CargoLineAuto extends Command {
         if(Math.abs(Robot.drive.LeftError) <= encoderErrorTolerance &&
           Math.abs(Robot.drive.RightError) <= encoderErrorTolerance) {
             //If the middle sensor isn't activated, continue driving fowards.
-          if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 ||
-            (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1) {
+          if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 0 ||
+            (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 0) {
 
             //Add 1 inch to current value
             int precalcL = Robot.drive.getLeftEncoder() + RobotMap.oneInchEncoder;
@@ -111,7 +111,7 @@ public class CargoLineAuto extends Command {
       (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 &&
       (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 0) {
         //Checks if it's angled too far.
-        if((Robot.ultrasonicSystem.getLeftValues()[0] - Robot.ultrasonicSystem.getLeftValues()[1]) >= RobotMap.ultrasonicErrorTolerance) {
+        if(Math.abs((Robot.ultrasonicSystem.getLeftValues()[0] - Robot.ultrasonicSystem.getLeftValues()[1])) >= RobotMap.ultrasonicErrorTolerance) {
 
           //Temp variables, to ensure that the math is done in the proper order, as Java doesn't abide by PEMDAS.
           int leftDifference = Robot.ultrasonicSystem.getLeftValues()[0]-Robot.ultrasonicSystem.getLeftValues()[1];
@@ -150,6 +150,11 @@ public class CargoLineAuto extends Command {
           Robot.drive.setLeftPosition(toDriveLeft);
           Robot.drive.setRightPosition(toDriveRight);
         }
+        else {
+          //If it isn't too far stop.
+          Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder());
+          Robot.drive.setRightPosition(Robot.drive.getRightEncoder());
+        }
       }
       
       //Checks if any of the middle sensor has been tripped.
@@ -166,7 +171,7 @@ public class CargoLineAuto extends Command {
         }
 
         //Checks if the back sensor has been tripped
-        if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 1 ||
+        else if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 1 ||
         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 1) {
 
           //Make the robot move 1 inch backwards
@@ -189,7 +194,7 @@ public class CargoLineAuto extends Command {
         }
 
         //Checks that the front sensor IS tripped
-        if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == 1 ||
+        else if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == 1 ||
         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == 1) {
 
           //Move the robot

@@ -7,7 +7,10 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Ultrasonic;
 
 /**
@@ -53,7 +56,27 @@ public class RobotMap {
   public static int counterRightOne = 0;
   public static int counterRightTwo = 0;
   public static int counterRightThree = 0;
+  
+  public static Encoder rightEncoder = new Encoder(9, 6);
+  public static Encoder leftEncoder = new Encoder(7, 8); 
+  public static int LeftEncoderTarget = 0;
+  public static int RightEncoderTarget = 0;
+  public static int MotorCurrentSum = 0;
 
+  public static int[] lastLeftOne = new int[2];
+  public static int[] lastLeftThree = new int[2];
+
+  public static int[] lastRightOne = new int[2];
+  public static int[] lastRightThree = new int[2];
+  
+  public static int maxReliableEncoder = 20; //currently around 5 inches //maximum distance we can trust the last known line encoder position to stay valid.
+  public static int maxUltrasonicDist = 457; //Defined in MMs, currently around 13 inches
+  public static int encoderErrorTolerance = 4;
+  public static int ultrasonicErrorTolerance = 33; // in millimeters. //TODO change this.
+  public static int halfIRDistance = 3; //in ticks, from the middle between the sensors. //TODO change this. //TODO William: check encoder Ratios.
+  public static int IRDistance = 7; // in ticks, distance between 2 sensors //TODO, check to make sure.
+  public static int oneInchEncoder = 4; 
+  
     //Ultrasonic Initiation
   public static Ultrasonic ultrasonicLeftOne = new Ultrasonic(10, 11);
   public static Ultrasonic ultrasonicLeftTwo = new Ultrasonic(12, 13);
@@ -63,4 +86,9 @@ public class RobotMap {
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
+
+  public static WPI_TalonSRX leftFrontMotor = new WPI_TalonSRX(13);
+  public static WPI_TalonSRX leftBackMotor = new WPI_TalonSRX(15);
+  public static WPI_TalonSRX rightFrontMotor = new WPI_TalonSRX(2);
+  public static WPI_TalonSRX rightBackMotor = new WPI_TalonSRX(16);
 }

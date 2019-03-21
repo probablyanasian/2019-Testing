@@ -15,6 +15,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.UltrasonicSystem;
+import frc.robot.subsystems.LineDetector;
 
 
 /**
@@ -30,8 +32,10 @@ public class Robot extends TimedRobot {
   public static Ultrasonic ultrasonicRightTwo = new Ultrasonic(2, 3);
   public static Ultrasonic ultrasonicLeftOne = new Ultrasonic(4, 5);
   public static Ultrasonic ultrasonicLeftTwo = new Ultrasonic(6, 7); */
-  public static Drive drive = new Drive();
+  public static Drive drive = new Drive(RobotMap.leftFrontMotor, RobotMap.leftBackMotor, RobotMap.rightFrontMotor, RobotMap.rightBackMotor);
   public static OI m_oi;
+  public static UltrasonicSystem ultrasonicSystem = new UltrasonicSystem();
+  public static LineDetector lineDetector = new LineDetector();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();

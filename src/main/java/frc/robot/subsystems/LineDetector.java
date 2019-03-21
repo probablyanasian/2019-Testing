@@ -225,29 +225,29 @@ public class LineDetector extends Subsystem {
     return(sensorsOn);
   }
   
-  /* public void lastLineDetected() {
+  public void lastLineDetected() {
     if((getIRSensors() & LineDetector.SENSOR_L1) == 1 &&
     (getIRSensors() & LineDetector.SENSOR_L2) == 1) {
-      RobotMap.lastLeftOne[0] = RobotMap.LeftEncoder.getRaw();
-      RobotMap.lastLeftOne[1] = RobotMap.RightEncoder.getRaw();
+      RobotMap.lastLeftOne[0] = RobotMap.leftEncoder.getRaw();
+      RobotMap.lastLeftOne[1] = RobotMap.rightEncoder.getRaw();
     }
     if((getIRSensors() & LineDetector.SENSOR_L3) == 1 &&
     (getIRSensors() & LineDetector.SENSOR_L2) == 1) {
-      RobotMap.lastLeftThree[0] = RobotMap.LeftEncoder.getRaw();
-      RobotMap.lastLeftThree[1] = RobotMap.RightEncoder.getRaw();
+      RobotMap.lastLeftThree[0] = RobotMap.leftEncoder.getRaw();
+      RobotMap.lastLeftThree[1] = RobotMap.rightEncoder.getRaw();
     } 
     if((getIRSensors() & LineDetector.SENSOR_R1) == 1 && 
     (getIRSensors() & LineDetector.SENSOR_R2) == 1) {
-      RobotMap.lastRightOne[0] = RobotMap.LeftEncoder.getRaw();
-      RobotMap.lastRightOne[1] = RobotMap.RightEncoder.getRaw();
+      RobotMap.lastRightOne[0] = RobotMap.leftEncoder.getRaw();
+      RobotMap.lastRightOne[1] = RobotMap.rightEncoder.getRaw();
     }
 
     if((getIRSensors() & LineDetector.SENSOR_R3) == 1 &&
     (getIRSensors() & LineDetector.SENSOR_R2) == 1) {
-      RobotMap.lastRightThree[0] = RobotMap.LeftEncoder.getRaw();
-      RobotMap.lastRightThree[1] = RobotMap.RightEncoder.getRaw();
-    }  
-  } */
+      RobotMap.lastRightThree[0] = RobotMap.leftEncoder.getRaw();
+      RobotMap.lastRightThree[1] = RobotMap.rightEncoder.getRaw();
+    } 
+  }
 
   @Override
   public void initDefaultCommand() {
