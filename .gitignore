@@ -154,6 +154,8 @@ gradle-app.setting
 .classpath
 .project
 .settings/
+bin/*
+build/*
 bin/
 build/
 
