@@ -38,9 +38,21 @@ public class RobotMap {
   public static DigitalInput irRight2 = new DigitalInput(4);
   public static DigitalInput irRight3 = new DigitalInput(5);
 
+  public static enum cargoAutoState {
+    IDLE, LINE, ANGLE; 
+  }
+  public static cargoAutoState curCargoAutoState;
+
+  public static enum cargoAutoSide {
+    NONE, LEFT, RIGHT;
+  }
+  public static cargoAutoSide curCargoAutoSide;
+
   public static enum IRState {
     IDLE, TRUE, WAIT;
   }
+
+
   public static IRState curIRStateLeftOne;
   public static IRState curIRStateLeftTwo;
   public static IRState curIRStateLeftThree;
