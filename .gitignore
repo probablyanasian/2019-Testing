@@ -154,10 +154,14 @@ gradle-app.setting
 .classpath
 .project
 .settings/
+<<<<<<< HEAD
 bin/*
 build/*
 bin/
 build/
+=======
+bin/
+>>>>>>> 4c22082dfad77cbc1a7db19f04a559cd7866051c
 
 
 # End of https://www.gitignore.io/api/c++,java,linux,macos,gradle,windows,visualstudiocode

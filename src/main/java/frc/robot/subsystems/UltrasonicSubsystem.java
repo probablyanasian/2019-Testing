@@ -13,7 +13,7 @@ import frc.robot.RobotMap;
 /**
  * Add your docs here.
  */
-public class UltrasonicSystem extends Subsystem {
+public class UltrasonicSubsystem extends Subsystem {
 
    /**
    * Gets the angle at the left side of the robot in relation to the wall beside it.
