@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+import frc.robot.commands.LineMemory;
 
 //import edu.wpi.first.wpilibj.DigitalInput;
 
@@ -33,6 +34,8 @@ public class LineDetector extends Subsystem {
   public static final int SENSOR_R1 = 1 << 3;
   public static final int SENSOR_R2 = 1 << 4;
   public static final int SENSOR_R3 = 1 << 5;
+  public static final int SENSOR_L123 = SENSOR_L1 + SENSOR_L2 + SENSOR_L3;
+  public static final int SENSOR_R123 = SENSOR_R1 + SENSOR_R2 + SENSOR_R3;
 
   public int getIRSensors() {
 
@@ -225,33 +228,84 @@ public class LineDetector extends Subsystem {
     return(sensorsOn);
   }
   
+  /**
+   * When called, checks if there's a line then remembers where (by encoder).
+   */
   public void lastLineDetected() {
-    if((getIRSensors() & LineDetector.SENSOR_L1) == 1 &&
-    (getIRSensors() & LineDetector.SENSOR_L2) == 1) {
-      RobotMap.lastLeftOne[0] = RobotMap.leftEncoder.getRaw();
-      RobotMap.lastLeftOne[1] = RobotMap.rightEncoder.getRaw();
+    // gets the IR sensors and uses `bitwise and` to find if it equals the mask
+    // If both IR sensors are true, then we can be certain that there *is* a line being detected.
+
+    //clear after 5 seconds.
+    if(RobotMap.IRClearCounter >= 251) { 
+      clearLastLines();
     }
-    if((getIRSensors() & LineDetector.SENSOR_L3) == 1 &&
-    (getIRSensors() & LineDetector.SENSOR_L2) == 1) {
-      RobotMap.lastLeftThree[0] = RobotMap.leftEncoder.getRaw();
-      RobotMap.lastLeftThree[1] = RobotMap.rightEncoder.getRaw();
-    } 
-    if((getIRSensors() & LineDetector.SENSOR_R1) == 1 && 
-    (getIRSensors() & LineDetector.SENSOR_R2) == 1) {
-      RobotMap.lastRightOne[0] = RobotMap.leftEncoder.getRaw();
-      RobotMap.lastRightOne[1] = RobotMap.rightEncoder.getRaw();
+    else {
+      RobotMap.IRClearCounter ++;
     }
 
-    if((getIRSensors() & LineDetector.SENSOR_R3) == 1 &&
-    (getIRSensors() & LineDetector.SENSOR_R2) == 1) {
-      RobotMap.lastRightThree[0] = RobotMap.leftEncoder.getRaw();
-      RobotMap.lastRightThree[1] = RobotMap.rightEncoder.getRaw();
-    } 
+    if((getIRSensors() & LineDetector.SENSOR_L123) == LineDetector.SENSOR_L123) {
+      System.err.println("Drive Better. All Left IRs Active");
+    }
+    else{
+      if((getIRSensors() & LineDetector.SENSOR_L1) == LineDetector.SENSOR_L1 &&
+      (getIRSensors() & LineDetector.SENSOR_L2) == LineDetector.SENSOR_L2) {
+        //Stores current encoder value into an array.
+        clearLastLines();
+        RobotMap.IRClearCounter = 0;
+        RobotMap.lastLeftOne[0] = RobotMap.leftEncoder.getRaw();
+        RobotMap.lastLeftOne[1] = RobotMap.rightEncoder.getRaw();
+      }
+      if((getIRSensors() & LineDetector.SENSOR_L3) == LineDetector.SENSOR_L3 &&
+      (getIRSensors() & LineDetector.SENSOR_L2) == LineDetector.SENSOR_L2) {
+        clearLastLines();
+        RobotMap.IRClearCounter = 0;
+        RobotMap.lastLeftThree[0] = RobotMap.leftEncoder.getRaw();
+        RobotMap.lastLeftThree[1] = RobotMap.rightEncoder.getRaw();
+      }
+    }
+
+    if((getIRSensors() & LineDetector.SENSOR_R123) == LineDetector.SENSOR_R123){
+      System.err.println("Drive Better. All Right IRs Active");
+    }
+    else {
+      if((getIRSensors() & LineDetector.SENSOR_R1) == LineDetector.SENSOR_R1 && 
+      (getIRSensors() & LineDetector.SENSOR_R2) == LineDetector.SENSOR_R2) {
+        clearLastLines();
+        RobotMap.IRClearCounter = 0;
+        RobotMap.lastRightOne[0] = RobotMap.leftEncoder.getRaw();
+        RobotMap.lastRightOne[1] = RobotMap.rightEncoder.getRaw();
+      }
+
+      if((getIRSensors() & LineDetector.SENSOR_R3) == LineDetector.SENSOR_R3 &&
+      (getIRSensors() & LineDetector.SENSOR_R2) == LineDetector.SENSOR_R2) {
+        clearLastLines();
+        RobotMap.IRClearCounter = 0;
+        RobotMap.lastRightThree[0] = RobotMap.leftEncoder.getRaw();
+        RobotMap.lastRightThree[1] = RobotMap.rightEncoder.getRaw();
+      }
+    }
+  }
+  /**
+   * Clears all line memories, sets to -1000000000 and 1000000000 for circles if broken
+   */
+  public void clearLastLines() {
+    RobotMap.lastLeftOne[0] = -1000000000;
+    RobotMap.lastLeftOne[1] = 1000000000;
+
+    RobotMap.lastLeftThree[0] = 1000000000;
+    RobotMap.lastLeftThree[1] = -1000000000;
+
+    RobotMap.lastRightOne[0] = -1000000000;
+    RobotMap.lastRightOne[1] = 1000000000;
+
+    RobotMap.lastRightThree[0] = 1000000000;
+    RobotMap.lastRightThree[1] = -1000000000;
   }
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+    
   }
 }

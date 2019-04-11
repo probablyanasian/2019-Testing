@@ -26,10 +26,10 @@ public class TankDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    RobotMap.leftFrontMotor.set(Robot.m_oi.driveStick.getRawAxis(1));
-    RobotMap.leftBackMotor.set(Robot.m_oi.driveStick.getRawAxis(1));
-    RobotMap.rightFrontMotor.set(-Robot.m_oi.driveStick.getRawAxis(5));
-    RobotMap.rightBackMotor.set(-Robot.m_oi.driveStick.getRawAxis(5));
+    RobotMap.leftFrontMotor.set(-Robot.m_oi.driveStick.getRawAxis(1));
+    RobotMap.leftBackMotor.set(-Robot.m_oi.driveStick.getRawAxis(1));
+    RobotMap.rightFrontMotor.set(Robot.m_oi.driveStick.getRawAxis(3));
+    RobotMap.rightBackMotor.set(Robot.m_oi.driveStick.getRawAxis(3));
   }
 
   // Make this return true when this Command no longer needs to run execute()

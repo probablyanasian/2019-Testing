@@ -41,29 +41,29 @@ public class RobotMap {
   public static enum cargoAutoState {
     IDLE, LINE, ANGLE; 
   }
-  public static cargoAutoState curCargoAutoState;
+  public static cargoAutoState curCargoAutoState = cargoAutoState.IDLE;
 
   public static enum cargoAutoSide {
     NONE, LEFT, RIGHT;
   }
-  public static cargoAutoSide curCargoAutoSide;
+  public static cargoAutoSide curCargoAutoSide = cargoAutoSide.NONE;
 
   public static enum IRState {
     IDLE, TRUE, WAIT;
   }
 
 
-  public static IRState curIRStateLeftOne;
-  public static IRState curIRStateLeftTwo;
-  public static IRState curIRStateLeftThree;
+  public static IRState curIRStateLeftOne = IRState.IDLE;
+  public static IRState curIRStateLeftTwo = IRState.IDLE;
+  public static IRState curIRStateLeftThree = IRState.IDLE;
 
   public static int counterLeftOne = 0;
   public static int counterLeftTwo = 0;
   public static int counterLeftThree = 0;
 
-  public static IRState curIRStateRightOne;
-  public static IRState curIRStateRightTwo;
-  public static IRState curIRStateRightThree;
+  public static IRState curIRStateRightOne = IRState.IDLE;
+  public static IRState curIRStateRightTwo = IRState.IDLE;
+  public static IRState curIRStateRightThree = IRState.IDLE;
 
   public static int counterRightOne = 0;
   public static int counterRightTwo = 0;
@@ -88,19 +88,22 @@ public class RobotMap {
   public static int halfIRDistance = 3; //in ticks, from the middle between the sensors. //TODO change this. //TODO William: check encoder Ratios.
   public static int IRDistance = 7; // in ticks, distance between 2 sensors //TODO, check to make sure.
   public static int oneInchEncoder = 4; 
+
+  public static final boolean[][] activatedIRs = {{false, false},{false, false},{false, false}};
+  public static int IRClearCounter = 0;
   
     //Ultrasonic Initiation
   public static Ultrasonic ultrasonicLeftOne = new Ultrasonic(10, 11);
   public static Ultrasonic ultrasonicLeftTwo = new Ultrasonic(12, 13);
-  public static Ultrasonic ultrasonicRightOne = new Ultrasonic(14, 15);
-  public static Ultrasonic ultrasonicRightTwo = new Ultrasonic(16, 17);
+  public static Ultrasonic ultrasonicRightOne = null;
+  public static Ultrasonic ultrasonicRightTwo = null;
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
 
-  public static WPI_TalonSRX leftFrontMotor = new WPI_TalonSRX(13);
+  public static WPI_TalonSRX leftFrontMotor = new WPI_TalonSRX(14);
   public static WPI_TalonSRX leftBackMotor = new WPI_TalonSRX(15);
-  public static WPI_TalonSRX rightFrontMotor = new WPI_TalonSRX(2);
-  public static WPI_TalonSRX rightBackMotor = new WPI_TalonSRX(16);
+  public static WPI_TalonSRX rightFrontMotor = new WPI_TalonSRX(16);
+  public static WPI_TalonSRX rightBackMotor = new WPI_TalonSRX(1);
 }

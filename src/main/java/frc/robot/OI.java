@@ -24,8 +24,8 @@ public class OI {
   // number it is.
   // Joystick stick = new Joystick(port);
   // Button button = new JoystickButton(stick, buttonNumber);
-  Joystick LeftStick = new Joystick(0);
-  Button buttonOne = new JoystickButton(LeftStick, 1);
+  public static Joystick driveStick = new Joystick(0);
+  Button buttonOne = new JoystickButton(driveStick, 1);
   
   public OI(){
     buttonOne.whileHeld(new CargoLineAuto());
@@ -49,9 +49,8 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
-  public Joystick driveStick = new Joystick(0);
-    // Creating the joystick
-  public Joystick getDriverStick() {
+  public Joystick getDriverStick(){
     return driveStick;
   }
+  
 }

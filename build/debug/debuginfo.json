@@ -1,5 +1,12 @@
 [
   {
+    "artifact": "frcJava (in project Testing)",
+    "target": "roborio",
+    "debugfile": "frcJava_roborio.debugconfig",
+    "project": "Testing",
+    "language": "java"
+  },
+  {
     "artifact": "frcJava (in project UltrasonicTest)",
     "target": "roborio",
     "debugfile": "frcJava_roborio.debugconfig",
@@ -7,10 +14,10 @@
     "language": "java"
   },
   {
-    "artifact": "frcJava (in project Testing)",
+    "artifact": "frcJava (in project 2019-testing)",
     "target": "roborio",
     "debugfile": "frcJava_roborio.debugconfig",
-    "project": "Testing",
+    "project": "2019-testing",
     "language": "java"
   }
 ]

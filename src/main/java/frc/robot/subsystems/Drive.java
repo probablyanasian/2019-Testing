@@ -22,11 +22,11 @@ public class Drive extends Subsystem {
     double RightEncoderTarget = 0.0;
     double LeftEncoderTarget = 0.0;
     // Right PID
-    double RightP = 0.05;
+    double RightP = 0.04;
     double RightI = 0.0;
     double RightD = 0.0;
     // Left PID
-    double LeftP = 0.05;
+    double LeftP = 0.04;
     double LeftI = 0.0;
     double LeftD = 0.0;
     // PID Variables
@@ -53,7 +53,7 @@ public class Drive extends Subsystem {
     double AGain = 0.0;
     double ALimit = 18.0;
     double unlimitedAccel = 0.0;
-    double MaxOutput = 0.5;
+    double MaxOutput = 0.3;
     double SumLimit = 25.0;
 
     /**
@@ -227,7 +227,7 @@ public class Drive extends Subsystem {
         if (LeftOutput > MaxOutput) {
             LeftOutput = MaxOutput;
         }
-        if (LeftOutput < (-MaxOutput)) {
+        else if (LeftOutput < (-MaxOutput)) {
             LeftOutput = (-MaxOutput);
         }
         // Set the motor speed.

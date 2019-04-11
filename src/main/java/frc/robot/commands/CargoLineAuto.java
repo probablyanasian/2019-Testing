@@ -33,7 +33,7 @@ public class CargoLineAuto extends Command {
     switch(RobotMap.curCargoAutoState) {
 
       case IDLE:
-        if(Robot.m_oi.getDriverStick().getRawButton(6)) {
+        if(Robot.m_oi.getDriverStick().getRawButton(1)) {
           RobotMap.curCargoAutoState = RobotMap.cargoAutoState.LINE;
         }
         else {
@@ -42,7 +42,7 @@ public class CargoLineAuto extends Command {
         break;
 
       case LINE:
-        if(!Robot.m_oi.getDriverStick().getRawButton(6)) {
+        if(!Robot.m_oi.getDriverStick().getRawButton(1)) {
         RobotMap.curCargoAutoState = RobotMap.cargoAutoState.IDLE;
         break;
         }
@@ -95,7 +95,7 @@ public class CargoLineAuto extends Command {
         break;
       
       case ANGLE:
-        if(!Robot.m_oi.getDriverStick().getRawButton(6)) {
+        if(!Robot.m_oi.getDriverStick().getRawButton(1)) {
           RobotMap.curCargoAutoState = RobotMap.cargoAutoState.IDLE;
           break;
         }
