@@ -46,7 +46,7 @@ public class RobotMap {
   public static enum cargoAutoSide {
     NONE, LEFT, RIGHT;
   }
-  public static cargoAutoSide curCargoAutoSide = cargoAutoSide.NONE;
+  public static cargoAutoSide curCargoAutoSide = cargoAutoSide.LEFT;
 
   public static enum IRState {
     IDLE, TRUE, WAIT;
@@ -93,8 +93,8 @@ public class RobotMap {
   public static int IRClearCounter = 0;
   
     //Ultrasonic Initiation
-  public static Ultrasonic ultrasonicLeftOne = new Ultrasonic(10, 11);
-  public static Ultrasonic ultrasonicLeftTwo = new Ultrasonic(12, 13);
+  public static Ultrasonic ultrasonicLeftOne = null; 
+  public static Ultrasonic ultrasonicLeftTwo = null; 
   public static Ultrasonic ultrasonicRightOne = null;
   public static Ultrasonic ultrasonicRightTwo = null;
   // If you are using multiple modules, make sure to define both the port
@@ -106,4 +106,6 @@ public class RobotMap {
   public static WPI_TalonSRX leftBackMotor = new WPI_TalonSRX(15);
   public static WPI_TalonSRX rightFrontMotor = new WPI_TalonSRX(16);
   public static WPI_TalonSRX rightBackMotor = new WPI_TalonSRX(1);
+
+  public static int[] lastLine = {20, 20};
 }

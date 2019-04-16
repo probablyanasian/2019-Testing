@@ -43,7 +43,7 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
 
-    RobotMap.ultrasonicLeftOne.setAutomaticMode(true);
+    //RobotMap.ultrasonicLeftOne.setAutomaticMode(true);
 
     RobotMap.curIRStateLeftOne = RobotMap.IRState.IDLE;
     RobotMap.curIRStateLeftTwo = RobotMap.IRState.IDLE;
@@ -133,7 +133,12 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-  }
+  //   System.out.println("Left Encoder: " + RobotMap.leftEncoder.get());
+  //   System.out.println("Right Encoder: " + RobotMap.rightEncoder.get());
+
+  //   System.out.println("Left IRs: " + RobotMap.irLeft1.get() + " " + RobotMap.irLeft2.get() + " " + RobotMap.irLeft3.get());
+  //   System.out.println("Right IRs: " + RobotMap.irRight1.get() + " " + RobotMap.irRight2.get() + " " + RobotMap.irRight3.get());
+   }
 
   /**
    * This function is called periodically during test mode.

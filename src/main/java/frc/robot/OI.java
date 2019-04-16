@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.CargoLineAuto;
+import frc.robot.commands.CargoLineAuto2;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -28,7 +29,7 @@ public class OI {
   Button buttonOne = new JoystickButton(driveStick, 1);
   
   public OI(){
-    buttonOne.whileHeld(new CargoLineAuto());
+    buttonOne.whileHeld(new CargoLineAuto2());
   }
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
